@@ -12,7 +12,7 @@ export const DownloadSection: React.FC = () => {
         <p className="text-lg text-amber-700 max-w-2xl mx-auto mb-8 reveal">
           Gotowy, aby pomóc Marcinowi w jego przygodzie? Pobierz grę już teraz i zacznij zbierać żołędzie!
         </p>
-        
+
         <div className="flex flex-wrap justify-center gap-6 reveal">
           <a
             href="https://wiewiorkiwyspa.itch.io/postaw-na-zoledzie"

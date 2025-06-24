@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-interface FeatureCardProps {
+type FeatureCardProps = {
   icon: ReactNode;
   title: string;
   description: string;
-}
+};
 
 const FeatureCard = ({ icon, title, description }: FeatureCardProps) => {
   return (
@@ -28,7 +28,7 @@ export const FeaturesSection = () => {
             Poznaj wyjątkowe elementy "Postaw na Żołędzie", które sprawiają, że nasza gra jest niepowtarzalnym doświadczeniem
           </p>
         </div>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <FeatureCard
             icon={<span>🌰</span>} // Zmieniono ikonę na kasztan (bliżej żołędzia)

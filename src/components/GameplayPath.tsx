@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-interface GameplayPathProps {
+type GameplayPathProps = {
   texts: {
     winOutcome?: { title: string; description: string };
     loseOutcome?: { title: string; description: string };
@@ -17,12 +17,11 @@ interface GameplayPathProps {
     step5Title?: string;
     step5Desc?: string;
   };
-}
+};
 
 const GameplayPath: React.FC<GameplayPathProps> = ({ texts }) => {
   const winText = texts.winOutcome || { title: 'MISTRZOSTWO!', description: 'Marcin obronił imponującą liczbę żołędzi przez 8 rund! Jego spryt i wiedza na pewno zrobiły wrażenie. Czas na zasłużony odpoczynek z pełną spiżarnią!' };
   const loseText = texts.loseOutcome || { title: 'UPS!', description: 'Tym razem Marcin stracił zbyt wiele żołędzi. Ale nie poddaje się! Następnym razem na pewno mu się uda zaimponować i zgromadzić zapasy!' };
-
 
   const [revealedSteps, setRevealedSteps] = useState<Set<number>>(new Set());
 
@@ -70,28 +69,30 @@ const GameplayPath: React.FC<GameplayPathProps> = ({ texts }) => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const stepNumber = parseInt(entry.target.getAttribute('data-step-number') || '0', 10);
+            const stepNumber = Number.parseInt(entry.target.getAttribute('data-step-number') || '0', 10);
             if (stepNumber) {
-              setRevealedSteps((prev) => new Set(prev).add(stepNumber));
+              setRevealedSteps(prev => new Set(prev).add(stepNumber));
             }
           }
         });
       },
-      { threshold: 0.5 } // Trigger when 50% of the element is visible
+      { threshold: 0.5 }, // Trigger when 50% of the element is visible
     );
 
     stepRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
+      if (ref) {
+        observer.observe(ref);
+      }
     });
 
     return () => {
       stepRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
+        if (ref) {
+          observer.unobserve(ref);
+        }
       });
     };
   }, [steps.length]); // Re-run if steps array length changes (safer than deep comparison for this use case)
-
-
 
   return (
     <div ref={pathContainerRef} className="gameplay-tree-path relative py-12 flex flex-col items-center">
@@ -103,21 +104,23 @@ const GameplayPath: React.FC<GameplayPathProps> = ({ texts }) => {
       {/* Gałęzie z krokami */}
       <div className="relative z-10 w-full max-w-4xl">
         {steps.map((step, index) => (
-          <div 
-            key={step.number} 
-            ref={el => { stepRefs.current[index] = el; }} // Assign ref to each step container
+          <div
+            key={step.number}
+            ref={(el) => {
+              stepRefs.current[index] = el;
+            }} // Assign ref to each step container
             data-step-number={step.number} // For IntersectionObserver
             className={`tree-branch-container my-16 flex items-center w-full ${step.branchSide === 'left' ? 'justify-start' : 'justify-end'} step-reveal ${revealedSteps.has(step.number) ? 'is-revealed' : ''}`}
             onMouseEnter={() => setActiveStep(step.number)}
             onMouseLeave={() => setActiveStep(null)}
             style={{ paddingTop: `${index * 2}rem` }} // Stagger branches vertically slightly
           >
-            <div 
+            <div
               className={`tree-branch-content bg-yellow-700 p-6 rounded-lg shadow-xl w-11/12 md:w-2/3 lg:w-1/2 transform transition-all duration-300 hover:shadow-2xl hover:scale-110 
                           ${step.branchSide === 'left' ? 'mr-auto md:mr-12 lg:mr-20 text-right' : 'ml-auto md:ml-12 lg:ml-20 text-left'} 
                           ${activeStep === step.number ? 'scale-110 shadow-2xl border-2 border-amber-400' : 'border-2 border-transparent'}`}
             >
-              {/* Connectors between steps are removed for the central timeline design. 
+              {/* Connectors between steps are removed for the central timeline design.
                  The central line visually connects all steps. */}
               <div className="flex items-center mb-2 ">
                 {step.branchSide === 'right' && <span className="tree-step-number text-2xl font-troika text-amber-600 mr-3">{step.number}</span>}
@@ -140,7 +143,7 @@ const GameplayPath: React.FC<GameplayPathProps> = ({ texts }) => {
             <h4 className="text-xl md:text-2xl font-troika text-red-700 mb-2">{loseText.title}</h4>
             <p className="text-sm md:text-base text-red-600 font-montserrat">{loseText.description}</p>
             {/* Optional: Icon for lose */}
-            <div className="text-4xl mt-3">🐿️😢</div> 
+            <div className="text-4xl mt-3">🐿️😢</div>
           </div>
 
           {/* Win Outcome Card */}

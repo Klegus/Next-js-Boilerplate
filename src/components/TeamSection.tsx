@@ -1,7 +1,7 @@
-interface TeamMemberProps {
+type TeamMemberProps = {
   name: string;
   role: string;
-}
+};
 
 const TeamMember = ({ name, role }: TeamMemberProps) => (
   <div className="glass-effect rounded-xl p-6 text-center animate-slide-up">
@@ -52,11 +52,11 @@ export const TeamSection = () => {
           <h3 className="text-2xl font-bold text-amber-800 mb-4">Nasza misja</h3>
           <p className="text-lg text-amber-700 mb-4">
             Jako studenci i absolwenci Wyższej Szkoły Przedsiębiorczości i Administracji w Lublinie,
-            łączy nas pasja do tworzenia innowacyjnych doświadczeń w świecie gier. 
+            łączy nas pasja do tworzenia innowacyjnych doświadczeń w świecie gier.
           </p>
           <p className="text-lg text-amber-700">
-            Nasz zespół powstał dzięki wspólnym projektom na uczelni, 
-            gdzie odkryliśmy, że razem możemy tworzyć wyjątkowe produkcje, 
+            Nasz zespół powstał dzięki wspólnym projektom na uczelni,
+            gdzie odkryliśmy, że razem możemy tworzyć wyjątkowe produkcje,
             które łączą rozrywkę z edukacją i kulturowymi odniesieniami.
           </p>
         </div>
