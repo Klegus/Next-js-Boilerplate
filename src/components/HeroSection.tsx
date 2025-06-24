@@ -41,8 +41,8 @@ export const HeroSection = () => {
           <div className="lg:w-1/2 animate-slide-in-right">
             <div className="glass-effect rounded-xl p-4 relative">
               {/* Placeholder for game screenshot - replace with your actual game image */}
-              <div className="aspect-video bg-amber-200 rounded-lg flex items-center justify-center"
-                   style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'600\' height=\'337\' viewBox=\'0 0 600 337\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect width=\'600\' height=\'337\' fill=\'%23FCD34D\'/%3E%3Cpath d=\'M300 168.5C358.66 168.5 406 147.42 406 121.5C406 95.5797 358.66 74.5 300 74.5C241.34 74.5 194 95.5797 194 121.5C194 147.42 241.34 168.5 300 168.5Z\' fill=\'%23B45309\' fill-opacity=\'0.7\'/%3E%3Crect x=\'214\' y=\'121\' width=\'172\' height=\'142\' fill=\'%23B45309\' fill-opacity=\'0.7\'/%3E%3Cpath d=\'M300 262.5C358.66 262.5 406 241.42 406 215.5C406 189.58 358.66 168.5 300 168.5C241.34 168.5 194 189.58 194 215.5C194 241.42 241.34 262.5 300 262.5Z\' fill=\'%23B45309\' fill-opacity=\'0.7\'/%3E%3Cpath d=\'M300 293.5C341.974 293.5 376 281.77 376 267.5C376 253.23 341.974 241.5 300 241.5C258.026 241.5 224 253.23 224 267.5C224 281.77 258.026 293.5 300 293.5Z\' fill=\'%23B45309\'/%3E%3Ccircle cx=\'300\' cy=\'167\' r=\'34\' fill=\'%23FBBF24\'/%3E%3Cellipse cx=\'300\' cy=\'251\' rx=\'63\' ry=\'12\' fill=\'%23FBBF24\'/%3E%3Cpath d=\'M315 159C329.359 159 341 147.359 341 133C341 118.641 329.359 107 315 107C300.641 107 289 118.641 289 133C289 147.359 300.641 159 315 159Z\' fill=\'%23FBBF24\'/%3E%3C/svg%3E")'}}>
+              <div className="aspect-video rounded-lg overflow-hidden">
+                <img src="/img/1.webp" alt="Główne ujęcie z gry Postaw Na Żołędzie" className="w-full h-full object-cover" />
               </div>
               <Link href="#download" className="absolute bottom-5 left-1/2 transform -translate-x-1/2 z-20">
                 <button className="btn-modern btn-primary font-troika text-xl py-4 px-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">

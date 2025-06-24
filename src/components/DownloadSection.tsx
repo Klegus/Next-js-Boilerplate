@@ -14,41 +14,20 @@ export const DownloadSection: React.FC = () => {
         </p>
         
         <div className="flex flex-wrap justify-center gap-6 reveal">
-          <a 
-            href="#" // Replace with actual download link for Windows
+          <a
+            href="https://wiewiorkiwyspa.itch.io/postaw-na-zoledzie"
             className="btn-modern btn-primary font-troika text-lg"
             aria-label="Pobierz grę dla Windows"
-            target="_blank" // Good practice for download links
+            target="_blank"
             rel="noopener noreferrer"
           >
             Pobierz dla Windows
-          </a>
-          <a 
-            href="#" // Replace with actual download link for macOS
-            className="btn-modern font-troika text-lg"
-            aria-label="Pobierz grę dla macOS"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Pobierz dla macOS
-          </a>
-          <a 
-            href="#" // Replace with actual download link for Linux
-            className="btn-modern font-troika text-lg"
-            aria-label="Pobierz grę dla Linux"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Pobierz dla Linux
           </a>
         </div>
 
         <div className="mt-12 reveal">
           <p className="text-sm text-amber-600">
-            Gra jest dostępna na platformy Windows, macOS i Linux. Wkrótce także na urządzenia mobilne!
-          </p>
-          <p className="text-xs text-amber-500 mt-2">
-            (Uwaga: Linki są placeholderami. Rzeczywiste pliki do pobrania zostaną dodane wkrótce.)
+            Gra jest obecnie dostępna tylko na platformę Windows. Wersje dla innych systemów mogą pojawić się w przyszłości!
           </p>
         </div>
       </div>

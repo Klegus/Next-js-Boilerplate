@@ -2,8 +2,10 @@
 
 import GameplayPath from './GameplayPath';
 import FallingElements from './FallingElements';
+import { useState } from 'react';
 
 export const GameplaySection = () => {
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   return (
     <section id="gameplay" className="py-20 bg-[#f9f3e5] relative overflow-hidden">
       {/* Dodajemy komponent spadających elementów */}
@@ -29,22 +31,11 @@ export const GameplaySection = () => {
         <div className="flex flex-col lg:flex-row gap-10 items-center mt-16">
           <div className="lg:w-1/2 reveal-left">
             <div className="glass-effect rounded-xl p-6 mb-6 transform hover:scale-105 transition-transform duration-500">
-              {/* 
-                Placeholder for gameplay video. 
-                To embed, replace the div below with an iframe, e.g.:
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Gameplay Video" frameBorder="0" allowFullScreen></iframe>
-              */}
-              <div className="aspect-video bg-gradient-to-br from-amber-100 to-amber-300 rounded-lg flex items-center justify-center overflow-hidden relative">
-                <div className="absolute inset-0 opacity-20 pointer-events-none">
-                  <div className="wood-bg w-full h-full"></div>
-                </div>
-                <div className="relative z-10">
-                  <svg className="w-16 h-16 text-amber-800 opacity-80" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                  <p className="text-amber-800 mt-2 font-medium">Zobacz zwiastun teleturnieju</p>
-                </div>
-              </div>
+              <video
+                src="/vid/trailer-720p.mp4"
+                controls
+                className="w-full h-full aspect-video rounded-lg object-cover"
+              />
             </div>
           </div>
 
@@ -68,26 +59,35 @@ export const GameplaySection = () => {
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
           <h3 className="text-2xl font-bold text-amber-800 col-span-full mb-6 font-troika text-center">Galeria z teleturnieju</h3>
-          {/* Game screenshot placeholders with enhanced glass effect */}
-          {[1, 2, 3, 4].map((num) => (
-            <div key={num} className="glass-effect rounded-lg overflow-hidden transform hover:scale-105 transition-all duration-300 hover:shadow-xl">
-              <div className="aspect-video bg-gradient-to-br from-amber-50 to-amber-200 flex items-center justify-center p-4 relative">
-                <div className="absolute inset-0 opacity-10 pointer-events-none">
-                  <div className="dark-wood-bg w-full h-full"></div>
-                </div>
-                <div className="w-full h-full flex items-center justify-center text-amber-700 font-medium">
-                  {[
-                    "Marcin wybiera kategorię",
-                    "Rozdzielanie żołędzi",
-                    "Emocje po wygranej",
-                    "Marcin z ukochaną"
-                  ][num-1]}
-                </div>
-              </div>
+          {['2.webp','3.webp','4.webp','5.webp'].map((file, idx) => (
+            <div
+              key={file}
+              className="glass-effect rounded-lg overflow-hidden transform hover:scale-105 transition-all duration-300 hover:shadow-xl cursor-zoom-in"
+              onClick={() => setLightboxImage(file)}
+            >
+              <img
+                src={`/img/${file}`}
+                alt={`Zrzut ekranu ${idx + 2} z gry Postaw Na Żołędzie`}
+                className="w-full h-full object-cover aspect-video"
+              />
             </div>
           ))}
         </div>
       </div>
+
+      {/* Lightbox overlay */}
+      {lightboxImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 cursor-zoom-out"
+          onClick={() => setLightboxImage(null)}
+        >
+          <img
+            src={`/img/${lightboxImage}`}
+            alt="Powiększone zdjęcie z gry"
+            className="max-w-4xl max-h-[90vh] object-contain"
+          />
+        </div>
+      )}
     </section>
   );
 };

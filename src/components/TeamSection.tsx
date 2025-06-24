@@ -1,34 +1,29 @@
-
-
 interface TeamMemberProps {
   name: string;
   role: string;
-  avatar: string;
 }
 
-const TeamMember = ({ name, role, avatar }: TeamMemberProps) => {
-  return (
-    <div className="glass-effect rounded-xl overflow-hidden animate-slide-up">
-      <div className="aspect-square bg-amber-200 flex items-center justify-center">
-        {/* Replace with actual team member image */}
-        <p className="text-amber-700">{avatar}</p>
-      </div>
-      <div className="p-4 text-center">
-        <h3 className="text-xl font-bold text-amber-800">{name}</h3>
-        <p className="text-amber-600">{role}</p>
-      </div>
-    </div>
-  );
-};
+const TeamMember = ({ name, role }: TeamMemberProps) => (
+  <div className="glass-effect rounded-xl p-6 text-center animate-slide-up">
+    <h3 className="text-xl font-bold text-amber-800 mb-1">{name}</h3>
+    <p className="text-amber-600">{role}</p>
+  </div>
+);
 
 export const TeamSection = () => {
-  // Team member data - you can adjust these names and roles
-  const teamMembers = [
-    { name: "Adam Nowak", role: "Game Designer", avatar: "Avatar 1" },
-    { name: "Julia Kowalska", role: "Developer", avatar: "Avatar 2" },
-    { name: "Mateusz Wiśniewski", role: "Art Director", avatar: "Avatar 3" },
-    { name: "Aleksandra Dąbrowska", role: "UI/UX Designer", avatar: "Avatar 4" },
-    { name: "Mike Brogowski", role: "Project Manager", avatar: "Avatar 5" }
+  const teamMembers: TeamMemberProps[] = [
+    { name: 'Alicja', role: 'Project Manager' },
+    { name: 'Dana', role: 'Designer' },
+    { name: 'Przemysław', role: 'Level designer' },
+    { name: 'Nikita', role: 'Developer' },
+    { name: 'Max', role: 'Developer' },
+    { name: 'Viktoria', role: 'Grafika' },
+    { name: 'Veronika', role: 'Audio' },
+    { name: 'Hanna', role: 'Grafika' },
+    { name: 'Mateusz', role: 'Blender Expert' },
+    { name: 'Kasia', role: 'Grafika' },
+    { name: 'Mike Brogowski', role: 'Patron drużyny' },
+    { name: 'Robert Miedziocha', role: 'Patron drużyny' },
   ];
 
   return (
@@ -49,7 +44,6 @@ export const TeamSection = () => {
               key={index}
               name={member.name}
               role={member.role}
-              avatar={member.avatar}
             />
           ))}
         </div>
